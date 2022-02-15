@@ -1,4 +1,6 @@
 # C++ Basics: References and Pointers
+source: [YouTube: Let's Leran C++ Basics: 5 of 14 ~ Reference & Pointers](https://www.youtube.com/watch?v=DvUYbUn9uQ4&list=PL82YdDfxhWsCyZLsg_kXhH8sy5ixQNras&index=5)
+
 here is a slide in reference:
 
 ![reference](./images/references.png)
