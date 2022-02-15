@@ -1,23 +1,23 @@
 # C++ Basics: References and Pointers
 here is a slide in reference:
 
-![reference](../../images/references.png)
+![reference](./images/references.png)
 
-![address of variables](../../images/operator_address_of.png)
+![address of variables](./images/operator_address_of.png)
 
-![reference variable](../../images/reference_variable.png)
+![reference variable](./images/reference_variable.png)
 
-![why not &r = &a?](../../images/why_not_ref.png)
+![why not &r = &a?](./images/why_not_ref.png)
 
-![reference specification](../../images/references_specs.png);
+![reference specification](./images/references_specs.png);
 
-![dereference operator](../../images/dereference_operator.png)
+![dereference operator](./images/dereference_operator.png)
 
-![pointers](../../images/pointers.png)
+![pointers](./images/pointers.png)
 
-![pointer specifications](../../images/pointer_specs.png)
+![pointer specifications](./images/pointer_specs.png)
 
-![Final Challenge](../../images/Final_challenge.png)
+![Final Challenge](./images/Final_challenge.png)
 ```c++
 //CHALLENGE: 
     // 1. Create 5 different variables of different data types. Output each their values and addresses
