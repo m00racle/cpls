@@ -94,6 +94,23 @@ int main() {
     cout << "variable 5= " << v5 << endl;
     cout << "addres v 5= " << & v5 << endl;
 
+    // challenge 2: this is my own takes
+    // make the address of variables
+    bool & va1 = v1;
+    int * va2;
+    //NOTE the dereference operator is allowed to have null value as at this moment va2 is still null
+    va2 = & v2; // this takes the memory address where the value of v2 is stored.
+    float* va3 = &v3;
+    double& va4 = v4;
+    string &va5 = v5;
+
+    // proof the results
+    cout << "va1 address = " << &va1 << endl;
+    cout << "va2 address = " << va2 << endl;
+    cout << "va3 address = " << va3 << endl;
+    cout << "va4 address = " << &va4 << endl;
+    cout << "va5 address = " << &va5 << endl;
+
     // Challange 3
     cout << "challenge 3" << endl;
     string s1 = "We got a problem";
@@ -109,6 +126,6 @@ int main() {
     cout << "deref sparray[0]: " << *(*sparray) << endl; // the address of the array is the address of its first (0th) element!
     cout << "deref sparray[1]: " << **(sparray + 1) << endl;
     cout << "deref sparray[2]: " << *sparray[2] << endl;
-    
+        
     return 0;
 }
