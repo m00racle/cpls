@@ -5,6 +5,12 @@
 using namespace std;
 
 int main() {
-    cout << "hello M00racle from C++" << endl;
+    // try again with vector
+    vector<string> msg {"hello", "C++", "world!"};
+    //now iterate
+    for (const string& word: msg){
+        cout << word << " ";
+    }
+    cout << " hello M00racle from C++" << endl;
     return 0;
 }
