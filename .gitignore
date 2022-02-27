@@ -7,6 +7,11 @@
 !.vscode/*.code-snippets
 **/.vscode/
 
+# additional libraries
+libs/*
+libs/
+**/libs/
+
 # Local History for Visual Studio Code
 .history/
 
