@@ -2,6 +2,7 @@
 #include "print_Me.h"
 
 int main() {
-    print_Me();
+    namespace food = me::now;
+    food::print_Me();
     return 0;
 }

@@ -1,6 +1,12 @@
 #ifndef PRINT_ME_H
 #define PRINT_ME_H
-void print_Me();
+namespace me {
+    namespace now {
+        void print_Me();
+    }
+}
+
+
 #endif
 
 // void print_Me() {
