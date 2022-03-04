@@ -7,9 +7,6 @@
 !.vscode/*.code-snippets
 **/.vscode/
 
-# default directory structure template
-template/
-
 # additional libraries
 libs/*
 libs/
