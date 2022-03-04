@@ -6,7 +6,7 @@ namespace me {
     }
 }
 
-
+int add_Two(int x);
 #endif
 
 // void print_Me() {
