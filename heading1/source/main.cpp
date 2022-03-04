@@ -5,7 +5,6 @@
 
 
 using namespace std;
-using namespace emp;
 
 
 int main() {
@@ -13,6 +12,6 @@ int main() {
 
     emp1.setAge(44);
     emp1.IntroduceYourself();
-    cout<<"Hello world "<< std::endl;
+    cout<<"Hello world "<< endl;
     return 0;
 } 
