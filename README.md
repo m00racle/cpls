@@ -28,7 +28,8 @@ For VS Code user set the task.json as this:
 				// this will include all headers related to the working directory: consult the template folder.
 				"-I${fileDirname}",
 				"-I${fileDirname}/../headers",
-				"-std=c++11",
+				"-std=c++17",
+				// I already tested Clang++ 17 version and it works so far for all examples
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}.out"
 			],
