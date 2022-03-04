@@ -14,7 +14,7 @@ using namespace std;
     }
 
     // Create a 'mult_Array' function that takes in: a pointer to an array, the size of the array, and a double called 'multiplier'. Create a loop within the function that multiplies every value in the array by the multiplier
-    void mult_Array(double* arr, int size, double multiplier) {
+    void mult_Array(double arr[], int size, double multiplier) {
         for (int i = 0; i < size; i++)
         {
             // multiply each component of the array by multiplier
