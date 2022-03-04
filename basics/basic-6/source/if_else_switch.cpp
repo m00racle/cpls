@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "switch_Range.h"
 
 using namespace std;
 
@@ -44,13 +45,14 @@ int main() {
 
     //FINAL CHALLENGES
     //1. Create 3 "if" statements with '1', true and false as the arguments but DO NOTHING!
+    /* 
     if (1) ;
     if (true)
         ;
     if (false) {
         ;
     }
-
+ */
     // 2. Create 3 'if' 'else if' statements that check an int to see if it's >, == or < 0. Then output each as a statement 
     if (5 > 0) {
         cout << "5 > 0" << endl;
@@ -69,5 +71,19 @@ int main() {
     else {
         cout << "x is odd" << endl;
     }
+
+    // test the switch_Range:
+    int t;
+    cout << "Number of test: ";
+    cin >> t;
+    while (t--)
+    {
+        int N;
+        cout << "input number to test: ";
+        cin >> N;
+        test_Range tr;
+        cout << tr.isInRange(N) << endl;
+    }
+    
     return 0;
 }

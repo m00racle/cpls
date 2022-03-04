@@ -1,12 +1,11 @@
 // { Driver Code Starts
 #include <iostream>
 #include <string>
+#include "switch_Range.h"
 using namespace std; 
 
  // } Driver Code Ends
-class Solution{   
-public:
-    string isInRange(int N){
+string test_Range::isInRange(int N){
         // code here 
         switch (N)
         {
@@ -54,10 +53,9 @@ public:
             return "not in range";
             break;
         }
-    }
 };
-
 // { Driver Code Starts.
+/* 
 int main() 
 { 
     int t;
@@ -70,4 +68,6 @@ int main()
         cout << ob.isInRange(N) << endl;
     }
     return 0; 
-}   // } Driver Code Ends
+
+}
+*/
