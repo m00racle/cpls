@@ -55,3 +55,6 @@ libs/
 
 # macOS specific
 .DS_Store
+
+# sandbox ecosystem
+sandbox/
