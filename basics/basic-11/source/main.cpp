@@ -68,7 +68,9 @@ int main(){
     // 6. Create constexpr variables for an int, char, string, double
     constexpr int expr_Int = 6;
     constexpr char expr_Char = 'h';
-    constexpr char expr_String[] = "constexpr";
+    constexpr char expr_String[] = "constexpr"; //constexpr does not work with string thus I use char expr_String[]
+    //or the alternative is just use const string:
+    const std::string const_String = "const string";
     constexpr double expr_Double = 3.556789;
     std::cout << "expr_String: " << expr_String << std::endl;
 

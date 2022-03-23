@@ -9,7 +9,7 @@ using namespace std;
     }
 
     // Create a 'print' function that takes a string with default value of "ham" and simply prints out the value of the string
-    void print(string x) {
+    void print(string x = "ham") {
         cout << x << endl;
     }
 
@@ -42,7 +42,7 @@ int main() {
 
     // Create a 'print' function that takes a string with default value of "ham" and simply prints out the value of the string
     cout << "print(string) = " ;
-    print("Hellow World");
+    print();
     // NOTE: I can't directly put print("Hellow World") to the cout since print function returns void thus nothing to out from cout!!
     cout << endl;
 
