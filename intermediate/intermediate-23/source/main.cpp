@@ -1,22 +1,18 @@
 #include <iostream>
-#include <vector>
 #include <string>
 
 using std::cout;
-using std::endl;
+using std::getline;
 using std::string;
-using std::vector;
+using std::endl;
 
 class Base {
     public:
-        string result = "Base Class";
         int numb = 1;
-        virtual void Print() {
-            cout << "position: " << result << endl;
-        }
+        string result = "Base class";
 
-        virtual Base* Clone() {
-            return new Base();
+        virtual void Print() { 
+            cout << "the position: " << result << endl;
         }
 
         virtual void Incr() {numb++;}
@@ -25,47 +21,61 @@ class Base {
 
 class Derived : public Base {
     public:
-        string result = "Derived class";
         int numb = 11;
+        string result = "Derived class";
+
         void Print() override {
-            cout << "position: " << result << endl;
+            cout << "the position: " << result << endl;
         }
-        Base* Clone() override {
-            return new Derived();
-        }
-        void Incr() {numb++;}
-        void Print_num() {cout << "numb value in Derived: " << numb << endl;}
+
+        void Incr() override {numb++;}
+        void Print_num() override {cout << "numb value in Derived: " << numb << endl;}
 };
 
+void Print_out(Base* a) {// <- use pointer Base type as parameter
+    a->Incr();
+    a->Print_num();
+    cout << "Printed from function Print_out: \n";
+    a->Print(); // <- because using parameter we use -> to access class member function
+
+    // print the a inners of a pointer
+    cout << "pointer address: " << a << endl;
+    if (a) {
+        cout << "content inside"<< endl;
+    } else { cout << "content empty" << endl;}
+
+    // now delete a:
+    // delete a;
+
+    // test by creating new Base class memory allocation using pointer a to proof the deletion 
+    // only delete the content but not the pointer itsef:
+    a = new Base();
+    a->Print_num();
+    a->Print();
+    // test after delete:
+    cout << "pointer address: " << a << endl;
+    if (a) {
+        cout << "content inside"<< endl;
+    } else { cout << "content empty" << endl;}
+}
+
 int main() {
-    // initiate Derived class d
     Derived d;
-    
-    // test the clone:
-    Base* b_clone = d.Clone();
-    cout << "using Clone of d result: ";
-    b_clone->Print(); // use -> since this is Base* pointer type
+    Derived* id = &d; //initiate id as Derived pointer type object
 
-    // test the copy
-    Base b_copy = d;
-    cout << "using copy of d result: ";
-    b_copy.Print(); // uses dot since this is copy 
+    Print_out(id); // <- pass id into Print_out function.
+    delete id;
+    cout << "d numb: " << d.numb << endl;
 
-    // test the clone pointer:
-    cout << "b_clone after incremented: \n";
-    b_clone->Incr();
-    b_clone->Print_num();
-    cout << "d numb value: \n";
-    d.Print_num();
+    // pointer id:
+    cout << "pointer address: " << id << endl;
+    if (id) {
+        cout << "content inside"<< endl;
+    } else { cout << "content empty" << endl;}
+
     return 0;
 }
 
 /* RESULT:
-$ ./main
-using Clone of d result: position: Derived class
-using copy of d result: position: Base Class    
-b_clone after incremented:
-numb value in Derived: 12
-d numb value:
-numb value in Derived: 11
+This modified files is used to learn about pointer in dynamic memory and the deletion affect the pointers. 
  */
