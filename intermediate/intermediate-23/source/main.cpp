@@ -34,8 +34,9 @@ class Derived : public Base {
 
 void Print_out(Base* a) {// <- use pointer Base type as parameter
     a->Incr();
+    cout << "\nPrinted from function Print_out: \n";
     a->Print_num();
-    cout << "Printed from function Print_out: \n";
+    
     a->Print(); // <- because using parameter we use -> to access class member function
 
     // print the a inners of a pointer
@@ -44,19 +45,6 @@ void Print_out(Base* a) {// <- use pointer Base type as parameter
         cout << "content inside"<< endl;
     } else { cout << "content empty" << endl;}
 
-    // now delete a:
-    // delete a;
-
-    // test by creating new Base class memory allocation using pointer a to proof the deletion 
-    // only delete the content but not the pointer itsef:
-    a = new Base();
-    a->Print_num();
-    a->Print();
-    // test after delete:
-    cout << "pointer address: " << a << endl;
-    if (a) {
-        cout << "content inside"<< endl;
-    } else { cout << "content empty" << endl;}
 }
 
 int main() {
@@ -64,7 +52,8 @@ int main() {
     Derived* id = &d; //initiate id as Derived pointer type object
 
     Print_out(id); // <- pass id into Print_out function.
-    delete id;
+
+    cout << "\nPrinted from main function: \n";
     cout << "d numb: " << d.numb << endl;
 
     // pointer id:
@@ -73,9 +62,24 @@ int main() {
         cout << "content inside"<< endl;
     } else { cout << "content empty" << endl;}
 
+    // delete the id pointer
+
+    // Base b;
+    // Base* ib = &b;
+
+    // cout << "Test Print Base type pointer: \n";
+    // Print_out(ib);
+
+    // delete the ib pointer <- this will HALT the program!!!
+    // CAUTION: ERROR AND HALT!
+    delete id;
+    cout << "Run over" << endl;
+
+    // delete ib;
+
     return 0;
 }
 
 /* RESULT:
-This modified files is used to learn about pointer in dynamic memory and the deletion affect the pointers. 
+The pointer argument to pass is confusing. Basically it is making all process HALT 
  */
