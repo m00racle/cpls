@@ -59,18 +59,19 @@ As you can see I add "-std=c++11" on the "args" [] JSON data. More on it such as
 	"tasks": [
 		{
 			"type": "cppbuild",
-			"label": "C/C++: clang++ build active file",
-			"command": "/usr/bin/clang++",
+			"label": "C/C++: g++.exe build active file",
+			"command": "E:\\appsInstalled\\MSYS2\\mingw64\\bin\\g++.exe",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				// this will make all cpp files in the source or project folder to be compiled
 				"${fileDirname}/**.cpp",
-				// this will include all headers related to the working directory: consult the template folder.
 				"-I${fileDirname}",
 				"-I${fileDirname}/../headers",
+				"-IE:/Cpls/basics/libs/boost_1_78_0",
+				"-IE:/Cpls/basics/libs/GSL-main/include/gsl",
+				"-std=c++17",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}.out"
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -82,7 +83,7 @@ As you can see I add "-std=c++11" on the "args" [] JSON data. More on it such as
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: /usr/bin/clang++"
+			"detail": "compiler: E:\\appsInstalled\\MSYS2\\mingw64\\bin\\g++.exe"
 		}
 	]
 }
