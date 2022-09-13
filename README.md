@@ -88,7 +88,115 @@ As you can see I add "-std=c++11" on the "args" [] JSON data. More on it such as
 	]
 }
 ```
+#### New C++ Compiler Settings for Windows
+If you using Clang++ for Windows these settings are for you:
 
+`task.json`:
+```json
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++.exe build active file",
+			"command": "E:\\appsInstalled\\MSYS2\\ucrt64\\bin\\clang++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${fileDirname}/**.cpp",
+				"-I${fileDirname}",
+				"-I${fileDirname}/../headers",
+				"-std=c++17",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: E:\\appsInstalled\\MSYS2\\ucrt64\\bin\\clang++.exe"
+		}
+	]
+}	
+```
+
+`c_cpp_properties.json`:
+```json
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "E:/Cpls/basics/libs/GSL-main/include/gsl",
+                "E:/Cpls/basics/libs/boost_1_78_0",
+                "E:/Cpls/basics/basic-10/headers",
+                "E:/Cpls/heading1/headers"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "E:\\appsInstalled\\MSYS2\\ucrt64\\bin\\clang++.exe",
+            "cStandard": "c17",
+            "intelliSenseMode": "windows-clang-x64"
+        }
+    ],
+    "version": 4
+}	
+```
+
+`launch.json` :
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "clang++.exe - Build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "E:\\appsInstalled\\MSYS2\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: clang++.exe build active file"
+        }
+    ]
+}	
+```
+
+This is additional : `settings.json` :
+```c++
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp"
+    },
+    "emmet.includeLanguages": {},
+    "C_Cpp.errorSquiggles": "Enabled"
+}	
+```
 > PS: Add the library path manually for compiler 
 
 > NOTE: c_cpp_properties.json is for local intellisense not compiling!!
