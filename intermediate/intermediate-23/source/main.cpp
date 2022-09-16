@@ -1,3 +1,7 @@
+/* INTERMEDIATE 23 OBJECT SLICING
+    THIS code is demo of the effect of object slicing and how to avoid it
+ */
+
 #include <iostream>
 #include <string>
 
@@ -40,7 +44,8 @@ void Print_out(Base* a) {// <- use pointer Base type as parameter
     a->Print(); // <- because using parameter we use -> to access class member function
 
     // print the a inners of a pointer
-    cout << "pointer address: " << a << endl;
+    cout << "pointer address: " << &a << endl;
+    cout << "pointer target: " << a << endl;
     if (a) {
         cout << "content inside"<< endl;
     } else { cout << "content empty" << endl;}
@@ -57,7 +62,8 @@ int main() {
     cout << "d numb: " << d.numb << endl;
 
     // pointer id:
-    cout << "pointer address: " << id << endl;
+    cout << "pointer address: " << &id << endl;
+    cout << "pointer target: " << id << endl;
     if (id) {
         cout << "content inside"<< endl;
     } else { cout << "content empty" << endl;}
