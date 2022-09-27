@@ -3,55 +3,67 @@
 
 using std::cout; using std::endl; using std::string; using std::cin;
 
-int* CountToTen() {
-    int* p; // <- declaring a pointer (permisible for pointer)
-    p = new int[10]; //<- define it was empty pointer with 10 arrays
-    cout << "input the numbers (1 to 10):\n";
-    for(int i = 0; i < 10; i++){
-        cout << "input index " << i << " value: " << i + 1 << '\n';
-        p[i] = i + 1;
-    }
-    // REMEMBER: don't delete[] p yet! 
-    // return it since it is still needed by main() function.
-    return p;
-}
+/* 
+Demo on creating multi dimensional array
+ */
 
 int main() {
-    // calling the Count to ten function
-    int* ten = CountToTen(); //<- make sure the return type is correct (int*)
-    cout << "\ntesting the output: \n";
-    for (int k=0; k<10; k++){
-        cout << "index " << k << " : " << ten[k] << endl;
+/* 
+Parameter: none
+
+Creating and testing (run) multi dimensional array
+
+return int
+ */    
+    int* p1[5]; //<- this is not instantiated with NEW
+    int** p2; 
+    p2 = new int* [5];
+    int p3[5][4];
+    int numb = 5;
+    
+    for (int i = 0; i < 5; i++) {
+        p1[i] = &numb; //<- this making p1[i] points to address in STACK
+        p1[i] = new int(i); //<- even when p1[1] is filled with new it still address in STACK
+        p2[i] = new int(i * 5); //<- p2 from the beginning always using new -> STACK must delete later
+        for (int j = 0; j < 4; j++){
+            p3[i][j] = i + j;
+        }
     }
-    // remember to delete the array referenced by pointer
-    delete[] ten;
-    // since p and ten address the same array then no delete[] p needed in the CountToTen()
-    // this is why cleaning up is the responsibility of the caller function after they finish 
-    // using it.
+
+    cout << "test multi dimensional array: \n";
+    cout << "p1 array 1st element: " << *p1[1] << endl;
+    cout << "p2 array 1st element: " << *p2[1] << endl;
+    cout << "p3 array 1st element: " << p3[1] << endl;
+    //delete[] p1; //<- since p1 is not allocated using new it can't be deleted!
+
+    // now this is safer delete since I delete all HEAPs int(s) in p2
+    for (int i=0; i < 5; i++) {
+        delete[] p2[i];
+    }
+    // after that delete the array pointed by p2:
+    delete[] p2; //<- since p2 points to address in STACK it must be delete[]
+    // NOTE: I can just delete[] p2 and the whole HEAPs of int inside will be also deleted!
+    // here is the example: since p2 array has been deleted we can assign it a new one:
+
+    p2 = new int* [4]; //<- this time p2 will point to STACK address of 3 ints
+    for (int k=0; k<3 ; k++) {
+        // CAUTION: I prepare array of size 4 ints but only fill 3:
+        p2[k] = new int(k + 3);
+    }
+
+    cout << "p2 reassigned 3rd element: " << *p2[2] << endl; //<- call for index 2 since the 4th element is NULL
+    // if we call p[3] it will invoke SEGMENTATION ERROR EXCEPTION.
+
+    // then we delete the p2 again:
+    delete[] p2;
+
+
     return 0;
 }
 /* RESULT:
-input the numbers (1 to 10):
-input index 0 value: 1
-input index 1 value: 2
-input index 2 value: 3
-input index 3 value: 4
-input index 4 value: 5
-input index 5 value: 6
-input index 6 value: 7
-input index 7 value: 8
-input index 8 value: 9
-input index 9 value: 10
-
-testing the output:
-index 0 : 1
-index 1 : 2
-index 2 : 3
-index 3 : 4
-index 4 : 5
-index 5 : 6
-index 6 : 7
-index 7 : 8
-index 8 : 9
-index 9 : 10
+test multi dimensional array: 
+p1 array 1st element: 1
+p2 array 1st element: 5
+p3 array 1st element: 0xf9907ff710
+p2 reassigned 3rd element: 5
  */
