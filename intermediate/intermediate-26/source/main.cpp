@@ -4,19 +4,21 @@
 using std::cout; using std::endl; using std::string; using std::cin;
 
 int* CountToTen() {
-    int* p = new int[10];
-    cout << "input your numbers:\n";
+    int* p; // <- declaring a pointer (permisible for pointer)
+    p = new int[10]; //<- define it was empty pointer with 10 arrays
+    cout << "input the numbers (1 to 10):\n";
     for(int i = 0; i < 10; i++){
         cout << "input index " << i << " value: " << i + 1 << '\n';
         p[i] = i + 1;
     }
-
+    // REMEMBER: don't delete[] p yet! 
+    // return it since it is still needed by main() function.
     return p;
 }
 
 int main() {
     // calling the Count to ten function
-    int* ten = CountToTen();
+    int* ten = CountToTen(); //<- make sure the return type is correct (int*)
     cout << "\ntesting the output: \n";
     for (int k=0; k<10; k++){
         cout << "index " << k << " : " << ten[k] << endl;
@@ -29,7 +31,7 @@ int main() {
     return 0;
 }
 /* RESULT:
-input your numbers:
+input the numbers (1 to 10):
 input index 0 value: 1
 input index 1 value: 2
 input index 2 value: 3
