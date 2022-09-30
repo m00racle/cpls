@@ -34,7 +34,12 @@ return int
     cout << "p1 array 1st element: " << *p1[1] << endl;
     cout << "p2 array 1st element: " << *p2[1] << endl;
     cout << "p3 array 1st element: " << p3[1] << endl;
-    //delete[] p1; //<- since p1 is not allocated using new it can't be deleted!
+    // delete[] p1; //<- since p1 is not allocated using new it can't be deleted! this is in the stack
+    //but the content of the p1 array is in HEAP;
+    for (int i=0; i<5; i++){
+        cout << "deleting p1's element no." << i << '\n';
+        delete p1[i]; //<- IT NEEDS TO BE DELETED!
+    }
 
     // now this is safer delete since I delete all HEAPs int(s) in p2
     for (int i=0; i < 5; i++) {
