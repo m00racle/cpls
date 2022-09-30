@@ -53,13 +53,13 @@ void Print_out(Base* a) {// <- use pointer Base type as parameter
 }
 
 int main() {
-    Derived d;
-    Derived* id = &d; //initiate id as Derived pointer type object
+    // Derived d; //<-commented this out since THIS MEANS Derived type object is stored in STACK
+    Derived* id = new Derived(); //<- instantiate new Derived type object in HEAP and NOT in STACK
 
     Print_out(id); // <- pass id into Print_out function.
 
     cout << "\nPrinted from main function: \n";
-    cout << "d numb: " << d.numb << endl;
+    cout << "id numb: " << id->numb << endl; //<- using -> instead of . to access function in HEAP
 
     // pointer id:
     cout << "pointer address: " << &id << endl;
@@ -69,19 +69,8 @@ int main() {
     } else { cout << "content empty" << endl;}
 
     // delete the id pointer
-
-    // Base b;
-    // Base* ib = &b;
-
-    // cout << "Test Print Base type pointer: \n";
-    // Print_out(ib);
-
-    // delete the ib pointer <- this will HALT the program!!!
-    // CAUTION: ERROR AND HALT!
     delete id;
     cout << "Run over" << endl;
-
-    // delete ib;
 
     return 0;
 }
